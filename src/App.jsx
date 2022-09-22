@@ -10,7 +10,8 @@ export default function App() {
   const [showScore, setShowScore] = useState(false);
   const [number1, setNumber1] = useState();
   const [number2, setNumber2] = useState();
-  const [answer, setAnswer] = useState();
+  const [answer, setAnswer] = useState(0);
+  const [userAnswer, setUserAnswer] = useState('');
 
   useEffect(() => {
     const num1 = randomNumber(1, 10);
@@ -27,7 +28,27 @@ export default function App() {
   };
 
   const handleSubmit = (e) => {
+    console.log(`Your answer: ${userAnswer}, ${typeof userAnswer}`);
+    console.log(`The correct answer is: ${answer}, ${typeof answer}`);
     e.preventDefault();
+    if (userAnswer === answer) {
+      console.log('You got it correct!');
+      setScore(score + 1);
+      const num1 = randomNumber(1, 10);
+      const num2 = randomNumber(1, 10);
+      const res = num1 + num2;
+
+      setNumber1(num1);
+      setNumber2(num2);
+      setAnswer(res);
+    } else {
+      console.log('Wrong answer!');
+    }
+    setUserAnswer('');
+  };
+
+  const componentDidMount = () => {
+    userAnswer.focus();
   };
 
   return (
@@ -39,12 +60,16 @@ export default function App() {
         {number2}
       </h1>
       <div className="card">
-        <form onSubmit={() => handleSubmit()}>
-          <input />
-          <button type="submit">SUBMIT</button>
+        <form onSubmit={handleSubmit}>
+          <input
+            value={userAnswer}
+            onChange={(e) => setUserAnswer(parseInt(e.target.value))}
+            autoFocus
+          />
+          <input type="submit" />
         </form>
         <p className="read-the-docs">Answer: </p>
-        <p className="read-the-docs">Score: 0</p>
+        <p className="read-the-docs">Score: {score}</p>
       </div>
     </div>
   );
