@@ -192,7 +192,6 @@ export default function App() {
     console.log(`You're on Q${questionCount}`);
     if (questionCount % 10 === 0) {
       setLevel(level + 1);
-      // setMaxDigits(maxDigits * level);
       console.log(`Level: ${level}. Highest No is: ${highestNumber}`);
     }
 
