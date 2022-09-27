@@ -48,7 +48,6 @@ export default function App() {
 
   function chosenOperator() {
     const newOperator = Math.floor(Math.random() * 3);
-    console.log(`0 = x, 1 = -, 2 = +, so this is ${newOperator}`);
     return setOperator(newOperator);
   }
 
@@ -57,14 +56,6 @@ export default function App() {
   const moreTime = () => {
     setTimer((time) => time + 100);
   };
-
-  // Random Q&A on load
-
-  // useEffect(() => {
-  //   chosenOperator();
-  //   console.log(`On start, operator will be ${operator}`);
-  //   // setAnswer(res);
-  // }, []);
 
   // Start Game and Timer on Click
 
@@ -76,23 +67,18 @@ export default function App() {
     setOperator(newOperator);
     setNumber1(num1);
     setNumber2(num2);
-    console.log(newOperator);
     if (newOperator === 0) {
       const res = num1 * num2;
       setAnswer(res);
-      console.log(`Time to *, answer is ${res}`);
     } else if (newOperator === 1) {
       const res = num1 - num2;
-      console.log(`Time to -, answer is ${res}`);
       setAnswer(res);
     } else {
       const res = num1 + num2;
       setAnswer(res);
-      console.log(`Time to +, answer is ${res}`);
     }
     // chosenOperator();
     setQuestionCount(1);
-    console.log(`You're on Q${questionCount}, using a ${operator}`);
 
     setLevel(1);
     setHideQuestionAnswer(false);
@@ -120,11 +106,8 @@ export default function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(`User anwswer: ${parseInt(userAnswer)}, correct answer is ${answer}`);
     //CORRECT ANSWER
     if (parseInt(userAnswer) === answer) {
-      console.log('Correct!');
-
       setScore(score + 1);
 
       const num1 = randomNumber(2, highestNumber);
@@ -137,33 +120,25 @@ export default function App() {
         setNumber2(num2);
         const res = num1 * num2;
         setAnswer(res);
-        console.log(`Time to *, answer is ${res}`);
       } else if (newOperator === 1) {
         setNumber1(num1);
         setNumber2(num2);
         const res = num1 - num2;
         setAnswer(res);
-        console.log(`Time to -, answer is ${res}`);
       } else {
         setNumber1(num1);
         setNumber2(num2);
         const res = num1 + num2;
         setAnswer(res);
-        console.log(`Time to +, answer is ${res}`);
       }
       setNumber1(num1);
       setNumber2(num2);
 
       moreTime();
-      // setNumber1(num1);
-      // setNumber2(num2);
-      // setAnswer(res);
     }
 
     // INCORRECT ANSWER
     else {
-      console.log('Incorrect!');
-
       const num1 = randomNumber(2, highestNumber);
       const num2 = randomNumber(2, highestNumber);
       const newOperator = Math.floor(Math.random() * 3);
@@ -189,16 +164,10 @@ export default function App() {
 
     setUserAnswer('');
     setQuestionCount(questionCount + 1);
-    console.log(`You're on Q${questionCount}`);
     if (questionCount % 10 === 0) {
       setLevel(level + 1);
-      console.log(`Level: ${level}. Highest No is: ${highestNumber}`);
+      // console.log(`Level: ${level}. Highest No is: ${highestNumber}`);
     }
-
-    // SET NEW OPERATOR ONCE - DON'T KEEP DOING IT AGAIN
-    // const newOperator = Math.floor(Math.random() * 3);
-    // setOperator(newOperator);
-    // console.log(`CHOSEN OPERATOR IS ${newOperator}, answer is ${answer}`);
   };
 
   useEffect(() => {
@@ -229,7 +198,7 @@ export default function App() {
           </button>
           <p
             className="question"
-            // style={isStartGame ? { visibility: 'hidden' } : { visibility: '' }}
+            style={isStartGame ? { visibility: 'hidden' } : { visibility: '' }}
           >
             {number1}
             {newOperator === 0 ? 'x' : newOperator === 1 ? '-' : '+'}
