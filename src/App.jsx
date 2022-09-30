@@ -303,14 +303,14 @@ export default function App() {
           >
             Start!
           </button>
-          <p
+          <h1
             className="question"
             style={isStartGame ? { visibility: 'hidden' } : { visibility: '' }}
           >
             {number1}
             {newOperator === 0 ? '+' : newOperator === 1 ? '-' : newOperator === 2 ? 'x' : '/'}
             {number2}
-          </p>
+          </h1>
           <div>
             <form onSubmit={handleSubmit}>
               <input
