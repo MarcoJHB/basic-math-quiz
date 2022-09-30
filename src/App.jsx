@@ -242,7 +242,7 @@ export default function App() {
   }, [hideQuestionAnswer]);
 
   return (
-    <div className="App">
+    <div className="Container">
       {/* // GAME OVER SCREEN // When Time reaches zero, show final score and input for name // On
       submit, display names and scores */}
       {isGameOver ? (
@@ -291,26 +291,28 @@ export default function App() {
         </div>
       ) : (
         <>
-          <h1>Test Yo Math!</h1>
-          <p style={!isStartGame ? { display: 'none' } : { display: '' }}>
-            Answer basic arithmetic questions within the time limit!
-          </p>
-          <h2>Time left: {formatTime(timer)}</h2>
-          <h3>Level: {level}</h3>
-          <button
-            onClick={handleStart}
-            style={!isStartGame ? { display: 'none' } : { display: '' }}
-          >
-            Start!
-          </button>
-          <h1
-            className="question"
-            style={isStartGame ? { visibility: 'hidden' } : { visibility: '' }}
-          >
-            {number1}
-            {newOperator === 0 ? '+' : newOperator === 1 ? '-' : newOperator === 2 ? 'x' : '/'}
-            {number2}
-          </h1>
+          <section className="top-section">
+            <h1>Test Yo Math!</h1>
+            <p style={!isStartGame ? { display: 'none' } : { display: '' }}>
+              Answer basic arithmetic questions within the time limit!
+            </p>
+            <h2>Time left: {formatTime(timer)}</h2>
+            <h3>Level: {level}</h3>
+            <button
+              onClick={handleStart}
+              style={!isStartGame ? { display: 'none' } : { display: '' }}
+            >
+              Start!
+            </button>
+            <h1
+              className="question"
+              style={isStartGame ? { visibility: 'hidden' } : { visibility: '' }}
+            >
+              {number1}
+              {newOperator === 0 ? '+' : newOperator === 1 ? '-' : newOperator === 2 ? 'x' : '/'}
+              {number2}
+            </h1>
+          </section>
           <div>
             <form onSubmit={handleSubmit}>
               <input
