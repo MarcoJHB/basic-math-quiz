@@ -1,6 +1,6 @@
 # Test Yo Math - Basic Math Quiz built in React
 
-![alt text](https://github.com/MarcoJHB/basic-math-quiz/blob/main/public/screenshot.jpg "Quiz Screenshot")
+![alt text](https://github.com/MarcoJHB/basic-math-quiz/blob/main/public/screenshot.jpg 'Quiz Screenshot')
 
 ## Overview
 
@@ -15,6 +15,7 @@ Build an app that could do the following:
 3. If the user is incorrect, don't add time or score
 4. Every 10 levels, increase the difficulty (e.g. increase the range of the random numbers from 1-100)
 5. When the clock hits 0, display the final score
+6. Show highscores globally by saving the scores in a database
 
 ## Challenges
 
@@ -23,29 +24,28 @@ Build an app that could do the following:
 - Make sure the operator that is displayed is the same as the one used in the answer
 - Increasing the range of random numbers at each stage (each stage is 10 questions)
 - Showing a time with milliseconds
+- Pushing/pulling data from a database
 
 ## Solution
 
 ### Easy to use Timer
 
 ```javascript
-  const formatTime = (timer) => {
-    const result = new Date(timer * 10).toISOString().slice(14, 22);
-    return `${result} `;
-  };
+const formatTime = (timer) => {
+  const result = new Date(timer * 10).toISOString().slice(14, 22);
+  return `${result} `;
+};
 ```
 
 ### Increase range every 10 levels
 
 ```javascript
 if (questionCount % 10 === 0) {
-      setLevel(level + 1);
-      // console.log(`Level: ${level}. Highest No is: ${highestNumber}`);
-    }
+  setLevel(level + 1);
+  // console.log(`Level: ${level}. Highest No is: ${highestNumber}`);
+}
 ```
 
 ## Future Additions
 
-- Save High Scores on a Database
-- Include division in questions
-- Improve difficulty scaling (might be too hard now)
+- Show individual stats
