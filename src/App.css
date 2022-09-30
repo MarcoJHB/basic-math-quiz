@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px; */
   margin: 0 auto;
   padding: 0 2rem;
   text-align: center;
@@ -8,11 +8,22 @@
 }
 
 .Container {
-  padding-top: 2rem;
+  /* padding-top: 2rem; */
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
   justify-content: space-between;
+}
+
+.top-section {
+  padding-top: 4rem;
+  flex: 1 1 auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
 }
 
 input {
@@ -21,7 +32,7 @@ input {
 }
 
 .footer-link {
-  padding-top: 50%;
+  /* padding-top: 50%; */
   /* position: absolute; */
   text-align: center;
 }

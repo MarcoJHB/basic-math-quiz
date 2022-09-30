@@ -246,7 +246,7 @@ export default function App() {
       {/* // GAME OVER SCREEN // When Time reaches zero, show final score and input for name // On
       submit, display names and scores */}
       {isGameOver ? (
-        <div>
+        <div className="top-section">
           <h1>Times up!</h1>
           <h2>Final Score</h2>
           <h3>{score}</h3>
@@ -279,7 +279,7 @@ export default function App() {
                   onChange={(e) => setUserName(e.target.value)}
                 />
                 <input
-                  placeholder="GitHub Profile Link / Twitter handle / Leave Blank"
+                  placeholder="GitHub/Twitter/Leave Blank"
                   value={userLink}
                   type="url"
                   onChange={(e) => setUserLink(e.target.value)}
@@ -300,7 +300,7 @@ export default function App() {
             <h3>Level: {level}</h3>
             <button
               onClick={handleStart}
-              style={!isStartGame ? { display: 'none' } : { display: '' }}
+              style={!isStartGame ? { display: 'none' } : { visibility: '' }}
             >
               Start!
             </button>
@@ -312,21 +312,22 @@ export default function App() {
               {newOperator === 0 ? '+' : newOperator === 1 ? '-' : newOperator === 2 ? 'x' : '/'}
               {number2}
             </h1>
+
+            <div>
+              <form onSubmit={handleSubmit}>
+                <input
+                  disabled={isStartGame ? true : false}
+                  ref={ref}
+                  type="number"
+                  value={userAnswer}
+                  onChange={(e) => setUserAnswer(e.target.value)}
+                />
+              </form>
+              <p className="score">
+                Score: <span className="score-value">{score}</span>
+              </p>
+            </div>
           </section>
-          <div>
-            <form onSubmit={handleSubmit}>
-              <input
-                disabled={isStartGame ? true : false}
-                ref={ref}
-                type="number"
-                value={userAnswer}
-                onChange={(e) => setUserAnswer(e.target.value)}
-              />
-            </form>
-            <p className="score">
-              Score: <span className="score-value">{score}</span>
-            </p>
-          </div>
         </>
       )}
       <p className="footer-link">
