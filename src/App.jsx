@@ -128,6 +128,7 @@ export default function App() {
 
   const handleReset = () => {
     chosenOperator();
+    setNumberOperators(1);
     setUserAnswer('');
     setEndGame(false);
     setShowScores(false);
@@ -291,12 +292,14 @@ export default function App() {
       ) : (
         <>
           <h1>Test Yo Math!</h1>
-          <p>Answer basic arithmetic questions within the time limit!</p>
+          <p style={!isStartGame ? { display: 'none' } : { display: '' }}>
+            Answer basic arithmetic questions within the time limit!
+          </p>
           <h2>Time left: {formatTime(timer)}</h2>
           <h3>Level: {level}</h3>
           <button
             onClick={handleStart}
-            style={!isStartGame ? { visibility: 'hidden' } : { visibility: '' }}
+            style={!isStartGame ? { display: 'none' } : { display: '' }}
           >
             Start!
           </button>
