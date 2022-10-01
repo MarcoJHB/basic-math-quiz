@@ -3,7 +3,7 @@ import { getFirestore } from '@firebase/firestore';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyBDXXWm8ixY_XqelEey244x2aRvKoBeo90',
+
   authDomain: 'test-yo-math.firebaseapp.com',
   projectId: 'test-yo-math',
   storageBucket: 'test-yo-math.appspot.com',
